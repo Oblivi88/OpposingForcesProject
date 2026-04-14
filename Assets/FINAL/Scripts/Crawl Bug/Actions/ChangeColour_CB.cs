@@ -11,9 +11,11 @@ namespace NodeCanvas.Tasks.Actions
 
         private NavMeshAgent navAgent;
         private MeshRenderer meshRenderer;
+        public BBParameter<Material> defaultMaterial;
+        public BBParameter<Material> telegraphedMaterial;
 
         private float telegraphLevel;
-        private float telegraphSpeed = 0.1f;
+        private float telegraphSpeed = 0.25f;
         protected override string OnInit()
         {
             navAgent = agent.GetComponent<NavMeshAgent>();
@@ -36,9 +38,9 @@ namespace NodeCanvas.Tasks.Actions
                 telegraphLevel = 1;
             }
 
-            meshRenderer.material.color = Color.Lerp(Color.black, Color.darkRed, telegraphLevel);
+            meshRenderer.material.Lerp(defaultMaterial.value, telegraphedMaterial.value, telegraphLevel);
 
-            if (meshRenderer.material.color == Color.darkRed)
+            if (telegraphLevel >= 1)
             {
                 EndAction(true);
             }
