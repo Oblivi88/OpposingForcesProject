@@ -11,8 +11,8 @@ namespace NodeCanvas.Tasks.Actions {
 		}
 
 		protected override void OnExecute() {
-			Debug.Log("i am dead blehhhhh");
 			Object.Destroy(agent.gameObject);
+			EndAction(true);
 		}
 	}
 }
