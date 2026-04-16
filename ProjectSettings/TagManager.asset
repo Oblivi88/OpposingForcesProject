@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - MainWall
+  - LeftLight
+  - RightLight
+  - MainLight
+  - LeftSpark
+  - RightSpark
+  - MainSpark
   layers:
   - Default
   - TransparentFX

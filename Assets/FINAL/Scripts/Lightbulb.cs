@@ -7,6 +7,7 @@ public class Lightbulb : MonoBehaviour
     private MeshRenderer meshRenderer;
     private float dimLevel;
     public float dimSpeed;
+    private float onSpeed;
 
     public Material lightOn;
     public Material lightOff;
@@ -18,7 +19,8 @@ public class Lightbulb : MonoBehaviour
     {
         meshRenderer = GetComponent<MeshRenderer>();
         dimLevel = 0;
-        dimSpeed = 0.05f;
+        dimSpeed = 0.025f;
+        onSpeed = 0.2f;
         meshRenderer.material = lightOn;
         lightLayer = LayerMask.GetMask("Lights");
         lightCollider = GetComponent<Collider>();
@@ -41,7 +43,7 @@ public class Lightbulb : MonoBehaviour
             {
                 if (hitInfo.collider == lightCollider)
                 {
-                    dimLevel -= Time.deltaTime * (dimSpeed * 2.5f);
+                    dimLevel -= Time.deltaTime * onSpeed;
                 }
             }
         }

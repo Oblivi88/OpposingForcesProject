@@ -10,11 +10,12 @@ namespace NodeCanvas.Tasks.Actions
     {
         private NavMeshAgent navAgent;
         public BBParameter<Vector3> targetPosBBP;
-        public BBParameter<Transform> wallPosBBP;
+        private GameObject wall;
 
         protected override string OnInit()
         {
             navAgent = agent.GetComponent<NavMeshAgent>();
+            wall = GameObject.FindGameObjectWithTag("MainWall");
             if (navAgent == null)
             {
                 return $"Crawl Bug: Unable to find navMeshAgent.";
@@ -27,7 +28,7 @@ namespace NodeCanvas.Tasks.Actions
 
         protected override void OnExecute()
         {
-            targetPosBBP.value = new Vector3(Random.Range(1, 9), agent.transform.position.y, wallPosBBP.value.position.z);
+            targetPosBBP.value = new Vector3(Random.Range(1, 9), agent.transform.position.y, wall.transform.position.z);
 
             navAgent.SetDestination(targetPosBBP.value);
         }

@@ -17,11 +17,12 @@ namespace NodeCanvas.Tasks.Actions
 
         private NavMeshAgent navAgent;
 
-        public BBParameter<Transform> wallPosBBP;
+        private GameObject wall;
 
         protected override string OnInit()
         {
             navAgent = agent.GetComponent<NavMeshAgent>();
+            wall = GameObject.FindGameObjectWithTag("MainWall");
 
             if (navAgent == null)
             {
@@ -72,11 +73,11 @@ namespace NodeCanvas.Tasks.Actions
                     navAgent.SetDestination(targetPositionBBP.value);
                 }
             }
-            if (navAgent.transform.position.z >= wallPosBBP.value.position.z - 0.7f)
+            if (navAgent.transform.position.z >= wall.transform.position.z - 0.7f)
             {
-                navAgent.SetDestination(new Vector3(agent.transform.position.x, agent.transform.position.y, wallPosBBP.value.position.z));
+                navAgent.SetDestination(new Vector3(agent.transform.position.x, agent.transform.position.y, wall.transform.position.z));
             }
-            if (navAgent.transform.position.z >= wallPosBBP.value.position.z)
+            if (navAgent.transform.position.z >= wall.transform.position.z)
             {
                 EndAction(true);
             }
