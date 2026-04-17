@@ -9,6 +9,7 @@ namespace NodeCanvas.Tasks.Actions
     {
         public BBParameter<float> timeSinceLastSampleBBP;
         public BBParameter<Vector3> targetPositionBBP;
+        public BBParameter<float> speedBBP;
         private float sampleRateInSeconds;
         private float wanderDistance;
         private float wanderRadius;
@@ -40,6 +41,7 @@ namespace NodeCanvas.Tasks.Actions
         }
         protected override void OnUpdate()
         {
+            navAgent.speed = speedBBP.value;
             timeSinceLastSampleBBP.value += Time.deltaTime;
             if (timeSinceLastSampleBBP.value > sampleRateInSeconds)
             {

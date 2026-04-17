@@ -10,6 +10,7 @@ namespace NodeCanvas.Tasks.Actions
     {
         private NavMeshAgent navAgent;
         public BBParameter<Vector3> targetPosBBP;
+        public BBParameter<float> speedBBP;
         private GameObject wall;
 
         protected override string OnInit()
@@ -34,6 +35,7 @@ namespace NodeCanvas.Tasks.Actions
         }
         protected override void OnUpdate()
         {
+            navAgent.speed = speedBBP.value;
             if (navAgent.remainingDistance <= 0.1 && !navAgent.pathPending)
             {
                 EndAction(true);

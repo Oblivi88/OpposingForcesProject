@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class Lightbulb : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
-    private float dimLevel;
+    public float dimLevel;
     public float dimSpeed;
     private float onSpeed;
 

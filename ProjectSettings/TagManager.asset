@@ -12,6 +12,7 @@ TagManager:
   - RightSpark
   - MainSpark
   - JumpBug
+  - CrawlBug
   layers:
   - Default
   - TransparentFX

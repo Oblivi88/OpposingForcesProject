@@ -10,7 +10,7 @@ public class Spawner_CB : MonoBehaviour
     private float spawnX;
     void Start()
     {
-        spawnRate = 10;
+        spawnRate = 8;
         spawnX = Random.Range(-6, 6);
         spawnPos = new Vector3(spawnX, 0.08f, -5.5f);
         Instantiate(crawlBug, spawnPos, Quaternion.identity);
@@ -18,20 +18,23 @@ public class Spawner_CB : MonoBehaviour
 
     void Update()
     {
-        timeSinceLastSpawn += Time.deltaTime;
+        if (timeLeftScript.timeLeft > 0)
+        {
+            timeSinceLastSpawn += Time.deltaTime;
+        }
         if (timeSinceLastSpawn > spawnRate)
         {
             spawnX = Random.Range(-6, 6);
-            timeSinceLastSpawn = 0;
-        }
-        if (timeSinceLastSpawn == 0)
-        {
+            spawnPos = new Vector3(spawnX, 0.08f, -5.5f);
+
             Instantiate(crawlBug, spawnPos, Quaternion.identity);
+
+            timeSinceLastSpawn = 0;
         }
 
         if (timeLeftScript.timeLeft <= timeLeftScript.startTime / 2)
         {
-            spawnRate = 5;
+            spawnRate = 3;
         }
     }
 }
