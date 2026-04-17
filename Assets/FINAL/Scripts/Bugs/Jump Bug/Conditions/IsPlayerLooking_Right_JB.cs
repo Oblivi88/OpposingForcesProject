@@ -7,6 +7,7 @@ namespace NodeCanvas.Tasks.Conditions
 
     public class IsPlayerLooking_Right_JB : ConditionTask
     {
+        // condition to check if player is looking right
 
         private GameObject playerCam;
         protected override string OnInit()
@@ -22,10 +23,9 @@ namespace NodeCanvas.Tasks.Conditions
             }
         }
 
-        //Called once per frame while the condition is active.
-        //Return whether the condition is success or failure.
         protected override bool OnCheck()
         {
+            // if player is looking right, return true
             if (playerCam.transform.rotation.y >= 0.6)
             {
                 return true;

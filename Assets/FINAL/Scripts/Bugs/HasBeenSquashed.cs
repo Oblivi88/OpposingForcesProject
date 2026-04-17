@@ -6,6 +6,7 @@ namespace NodeCanvas.Tasks.Conditions
 
     public class HasBeenSquashed : ConditionTask
     {
+        // condition to check if bug has been squashed, using bug HP value
         private ClickDetection clickDetection;
         protected override string OnInit()
         {

@@ -10143,15 +10143,17 @@ MonoBehaviour:
       m_Calls: []
   m_text: '- Click and hold to keep lights on.
 
-    - Click bugs to squish.
+    - WASD/Arrow Keys to look around.
 
     -
-    Spam click if bug is on your face.
+    Click bugs to squish.
 
-    - If all 3 lights go out, you lose.
+    - Spam click if bug is on your face.
 
-    -
-    If you last the remaining time, you win.'
+    - If all
+    3 lights go out, you lose.
+
+    - If you last the remaining time, you win.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -4,9 +4,11 @@ using UnityEngine.AI;
 
 namespace NodeCanvas.Tasks.Actions
 {
-    // a combination of the WanderTask and NavigationTask scripts from class, and some of my own needed additions
+    // second movement type, zigzag
+    // pieces used from WanderTask from previous assignment
     public class Crawl2_CB : ActionTask
     {
+        // values to define movement
         public BBParameter<float> timeSinceLastSampleBBP;
         public BBParameter<Vector3> targetPositionBBP;
         public BBParameter<float> speedBBP;
@@ -34,6 +36,7 @@ namespace NodeCanvas.Tasks.Actions
         }
         protected override void OnExecute()
         {
+            // on spawn, set values
             sampleRateInSeconds = 0.5f;
             wanderDistance = 1f;
             wanderRadius = 0.5f;
@@ -41,6 +44,7 @@ namespace NodeCanvas.Tasks.Actions
         }
         protected override void OnUpdate()
         {
+            // take a new sample every [sampleRateInSeconds] seconds
             navAgent.speed = speedBBP.value;
             timeSinceLastSampleBBP.value += Time.deltaTime;
             if (timeSinceLastSampleBBP.value > sampleRateInSeconds)
@@ -57,15 +61,18 @@ namespace NodeCanvas.Tasks.Actions
                     navAgent.SetDestination(targetPositionBBP.value);
                 }
             }
+            // if bug reaches close enough to wall, immediately go to the wall
             if (navAgent.transform.position.z >= wall.transform.position.z - 0.7f)
             {
                 navAgent.SetDestination(new Vector3(agent.transform.position.x, agent.transform.position.y, wall.transform.position.z));
             }
+            // if bug reaches wall, end task
             if (navAgent.transform.position.z >= wall.transform.position.z)
             {
                 EndAction(true);
             }
         }
+        // calculate positions when zigzagging
         private Vector3 CalculateTargetPosition()
         {
             Vector3 circleCenter = agent.transform.position + agent.transform.forward * wanderDistance;

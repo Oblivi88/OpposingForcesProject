@@ -5,7 +5,9 @@ using UnityEngine;
 namespace NodeCanvas.Tasks.Actions {
 
 	public class Descend_JB : ActionTask {
-		private float targetY;
+		// on spawn, jump bug will face the player and descend from the ceiling
+
+		private float targetY; // Y level where the bug will stop descending
 		private float descentTime;
 		private float descentSpeed;
 		private Vector3 targetPos;
@@ -25,6 +27,8 @@ namespace NodeCanvas.Tasks.Actions {
         }
 
 		protected override void OnExecute() {
+			// on spawn, set values.
+			// make jump bug look at player.
 			targetY = 14.18f;
 			descentTime = 0;
 			descentSpeed = Random.Range(0.1f, 0.3f);
@@ -36,7 +40,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 		protected override void OnUpdate()
 		{
-
+			// lerp between spawn Y level and target Y level. Once descent has finished, end task
 			descentTime += Time.deltaTime * descentSpeed;
 			currentPos = Vector3.Lerp(startPos, targetPos, descentTime);
 			agent.transform.position = currentPos;

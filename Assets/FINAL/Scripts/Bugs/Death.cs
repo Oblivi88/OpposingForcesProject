@@ -5,6 +5,8 @@ namespace NodeCanvas.Tasks.Actions
 {
     public class Death : ActionTask
     {
+        // controls when bug dies
+
         public BBParameter<float> speedBBP;
         protected override string OnInit()
         {

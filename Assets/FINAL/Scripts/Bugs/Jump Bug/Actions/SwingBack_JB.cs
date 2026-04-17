@@ -7,6 +7,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class SwingBack_JB : ActionTask
 	{
+        // slowly wind up swing before jumping at player
         private float targetRotationX;
         private float rotation;
         public BBParameter<float> rotationSpeedBBP;

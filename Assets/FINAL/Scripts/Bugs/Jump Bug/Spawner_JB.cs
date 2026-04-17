@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Spawner_JB : MonoBehaviour
 {
+    // very similar to crawl bug spawner, spawns jump bugs along the left side
+    // spawns them along a random Z value
     private float timeSinceLastSpawn;
     private float spawnRate;
     public GameObject jumpBug;

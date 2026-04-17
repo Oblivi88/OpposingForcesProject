@@ -8,6 +8,7 @@ namespace NodeCanvas.Tasks.Actions
 
     public class GoBehindWall_CB : ActionTask
     {
+        // once colour change has finished go behind wall
 
         private NavMeshAgent navAgent;
         private float xPos;
@@ -29,12 +30,14 @@ namespace NodeCanvas.Tasks.Actions
 
         protected override void OnExecute()
         {
+            // set destination to straight forward from where bug is
             xPos = agent.transform.position.x;
             navAgent.SetDestination(new Vector3(xPos, 0.16f, wall.transform.position.z + 2));
         }
 
         protected override void OnUpdate()
         {
+            // once bug has gone behind wall, end action
             if (navAgent.remainingDistance == 0 && !navAgent.pathPending)
             {
                 EndAction(true);

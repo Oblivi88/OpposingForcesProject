@@ -7,6 +7,7 @@ namespace NodeCanvas.Tasks.Actions
 
     public class Sabotage3_CB : ActionTask
     {
+        // sabotaging right light
         private GameObject lightbulb3;
         private Lightbulb lightbulbScript3;
         private GameObject sparksObject3;

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Spawner_Right_JB : MonoBehaviour
 {
+    // exact same as Spawner_JB, but for the right side of the player
     private float timeSinceLastSpawn;
     private float spawnRate;
     public GameObject jumpBugRight;

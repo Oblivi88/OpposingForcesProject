@@ -2,19 +2,18 @@ using NodeCanvas.Framework;
 using UnityEngine.AI;
 using UnityEngine;
 
-
 namespace NodeCanvas.Tasks.Actions
 {
-
     public class Crawl1_CB : ActionTask
     {
+        // first movement type, straight
         private NavMeshAgent navAgent;
         public BBParameter<Vector3> targetPosBBP;
         public BBParameter<float> speedBBP;
         private GameObject wall;
 
         protected override string OnInit()
-        {
+        { 
             navAgent = agent.GetComponent<NavMeshAgent>();
             wall = GameObject.FindGameObjectWithTag("MainWall");
             if (navAgent == null)
@@ -29,12 +28,14 @@ namespace NodeCanvas.Tasks.Actions
 
         protected override void OnExecute()
         {
+            // set target position to a random point along the wall
             targetPosBBP.value = new Vector3(Random.Range(1, 9), agent.transform.position.y, wall.transform.position.z);
-
+            // move to point
             navAgent.SetDestination(targetPosBBP.value);
         }
         protected override void OnUpdate()
         {
+            // when it reaches destination, end value
             navAgent.speed = speedBBP.value;
             if (navAgent.remainingDistance <= 0.1 && !navAgent.pathPending)
             {
