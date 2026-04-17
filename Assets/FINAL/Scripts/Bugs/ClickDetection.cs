@@ -1,16 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ClickDetection_CB : MonoBehaviour
+public class ClickDetection : MonoBehaviour
 {
     private LayerMask bugLayer;
     private Collider bugCollider;
-    public bool isSquashed;
+    public int bugHP;
 
     void Start()
     {
-        bugLayer = LayerMask.GetMask("CrawlBug");
+        bugHP = 1;
+        bugLayer = LayerMask.GetMask("Bug");
         bugCollider = GetComponent<Collider>();
+
+        if (bugCollider == null)
+        {
+            bugCollider = GetComponentInChildren<SphereCollider>();
+        }
     }
 
     void Update()
@@ -22,7 +28,7 @@ public class ClickDetection_CB : MonoBehaviour
             {
                 if (hitInfo.collider == bugCollider)
                 {
-                    isSquashed = true;
+                    bugHP--;
                 }
             }
         }

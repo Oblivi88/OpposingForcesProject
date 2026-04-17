@@ -33,15 +33,10 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnUpdate()
         {
             telegraphLevel += Time.deltaTime * telegraphSpeed;
-            if (telegraphLevel > 1)
-            {
-                telegraphLevel = 1;
-            }
-
             meshRenderer.material.Lerp(defaultMaterial.value, telegraphedMaterial.value, telegraphLevel);
-
             if (telegraphLevel >= 1)
             {
+                telegraphLevel = 1;
                 EndAction(true);
             }
         }
